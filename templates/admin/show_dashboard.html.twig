@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-4"> Tableau de Bord</h1>
+
+<div class="row">
+    <div class="col-10 mx-auto my-4">
+        <h2 class="text-center">Tous les Membres</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Pseudo</th>
+                    <th>Roles</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Civilité</th> 
+                    <th>Date de création</th>
+                    <th>Date de modification</th>
+                    <th>Actions</th>               
+                
+                
+                </tr>
+            </thead>
+            <tbody>
+            {% for membre in membres %}
+            <tr>
+                    <td>{{ membre.id }}</td>
+                    <td>{{ membre.pseudo }}</td>
+                    <td>{{ membre.roles | first }}</td>
+                    <td>{{ membre.prenom }}</td>
+                    <td>{{ membre.nom }}</td>
+                    <td>{{ membre.email }}</td>
+                    <td>{{ membre.civilite }}</td>
+                    <td>{{ membre.createdAT | date('d/m/Y') }}</td>
+                    <td>{{ membre.updatedAt | date('d/m/Y') }}</td>
+                    
+                    <td>
+                    <a href="#" class="text-info" title="Modifier un membre"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="text-danger" title="Archiver un membre" onclick="return confirm('Voulez vous archiver le membre ?')"><i class="fa fa-edit"></i></a>
+                    
+                    </td>          
+            </tr>
+                
+            {% endfor %}      
+            
+            </tbody>  
+        
+        </table>
+    
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

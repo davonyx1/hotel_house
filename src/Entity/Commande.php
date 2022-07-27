@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -71,6 +73,17 @@ class Commande
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $deletedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="chambre")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $chambre;
+
+    public function __construct()
+    {
+        $this->chambre = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -205,6 +218,40 @@ class Commande
     public function setDeletedAt(?\DateTimeInterface $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    public function getChambre(): ?self
+    {
+        return $this->chambre;
+    }
+
+    public function setChambre(?self $chambre): self
+    {
+        $this->chambre = $chambre;
+
+        return $this;
+    }
+
+    public function addChambre(self $chambre): self
+    {
+        if (!$this->chambre->contains($chambre)) {
+            $this->chambre[] = $chambre;
+            $chambre->setChambre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChambre(self $chambre): self
+    {
+        if ($this->chambre->removeElement($chambre)) {
+            // set the owning side to null (unless already changed)
+            if ($chambre->getChambre() === $this) {
+                $chambre->setChambre(null);
+            }
+        }
 
         return $this;
     }

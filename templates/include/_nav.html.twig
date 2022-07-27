@@ -33,6 +33,9 @@
                <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Contact</a>
         </li>
+
+        {% if not app.user %}
+
         <li class="nav-item">
           <a class="nav-link" href="{{  path('user_register')}}">S'inscrire</a>
         </li>
@@ -40,6 +43,8 @@
           <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
         </li>
 
+        {% else %}
+          
 
         <li class="nav-item">
           <a class="nav-link" href="#">Espace perso</a>
@@ -47,26 +52,30 @@
                 <li class="nav-item">
           <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
         </li>
+        {% endif %}
 
+        {% if is_granted("ROLE_ADMIN") %}
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Espace admin
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{{ path('show_dashboard') }}">Tableau de bord</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Ajouter un membre</a></li>
             <li><a class="dropdown-item" href="#">Ajouter un slider</a></li>
-            <li><hr class="dropdown-divider"></li>
+            
             <li><a class="dropdown-item" href="#"> Ajouter une chambre</a></li>
             <li><a class="dropdown-item" href="#"> Ajouter une commande</a></li>
           </ul>
         </li>
-
+        {% endif %}
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      {# </form>
       <ul class="navbar-right">
       		<a class="flags flags-margin" href="?locale=fr">
 						<img src="http://img15.hostingpics.net/pics/625882frenchflag.png" title="français" alt="français">
@@ -75,7 +84,11 @@
 						<img src="http://img15.hostingpics.net/pics/204659englishflag.png" title="english" alt="english">
 			</a>
       
-      </ul>
+      </ul> #}
     </div>
   </div>
+  {% if app.user %}
+      <div class="text-nowrap"> {{ app.user.prenom }}Vous êtes connecté en tant que : <span class="text-warning">{{ app.user.roles | first }}</span></div>
+  
+  {% endif %}
 </nav>
