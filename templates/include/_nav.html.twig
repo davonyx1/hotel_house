@@ -47,7 +47,7 @@
           
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Espace perso</a>
+          <a class="nav-link" href="{{ path('show_profile') }}">Espace perso</a>
         </li>
                 <li class="nav-item">
           <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
@@ -63,20 +63,20 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="{{ path('show_dashboard') }}">Tableau de bord</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Ajouter un membre</a></li>
-            <li><a class="dropdown-item" href="#">Ajouter un slider</a></li>
+            <li><a class="dropdown-item" href="{{ path('show_dashboard') }}">Gérer membre</a></li>
+            <li><a class="dropdown-item" href="{{ path('show_slider') }}">Gérer slider</a></li>
             
-            <li><a class="dropdown-item" href="#"> Ajouter une chambre</a></li>
-            <li><a class="dropdown-item" href="#"> Ajouter une commande</a></li>
+            <li><a class="dropdown-item" href="{{ path('show_chambre') }}"> Gérer chambre</a></li>
+            <li><a class="dropdown-item" href="{{ path('show_commande') }}"> Gérer commande</a></li>
           </ul>
         </li>
         {% endif %}
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      {# </form>
-      <ul class="navbar-right">
+        <button class="btn btn-outline-success" type="submit">Chercher</button>
+      </form>
+      {# <ul class="navbar-right">
       		<a class="flags flags-margin" href="?locale=fr">
 						<img src="http://img15.hostingpics.net/pics/625882frenchflag.png" title="français" alt="français">
 			</a>
@@ -84,7 +84,7 @@
 						<img src="http://img15.hostingpics.net/pics/204659englishflag.png" title="english" alt="english">
 			</a>
       
-      </ul> #}
+      </ul>  #}
     </div>
   </div>
   {% if app.user %}

@@ -78,7 +78,7 @@ class Commande
      * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="chambre")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $chambre;
+    // private $chambre;
 
     public function __construct()
     {
@@ -222,37 +222,37 @@ class Commande
         return $this;
     }
 
-    public function getChambre(): ?self
-    {
-        return $this->chambre;
-    }
+    // public function getChambre(): ?self
+    // {
+    //     return $this->chambre;
+    // }
 
-    public function setChambre(?self $chambre): self
-    {
-        $this->chambre = $chambre;
+    // public function setChambre(?self $chambre): self
+    // {
+    //     $this->chambre = $chambre;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function addChambre(self $chambre): self
-    {
-        if (!$this->chambre->contains($chambre)) {
-            $this->chambre[] = $chambre;
-            $chambre->setChambre($this);
-        }
+    // public function addChambre(self $chambre): self
+    // {
+    //     if (!$this->chambre->contains($chambre)) {
+    //         $this->chambre[] = $chambre;
+    //         $chambre->setChambre($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeChambre(self $chambre): self
-    {
-        if ($this->chambre->removeElement($chambre)) {
-            // set the owning side to null (unless already changed)
-            if ($chambre->getChambre() === $this) {
-                $chambre->setChambre(null);
-            }
-        }
+    // public function removeChambre(self $chambre): self
+    // {
+    //     if ($this->chambre->removeElement($chambre)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($chambre->getChambre() === $this) {
+    //             $chambre->setChambre(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
