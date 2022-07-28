@@ -19,25 +19,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for slider in sliders %}
-                    
-                
                     <tr>
                         <td>{{ slider.id }}</td>
-                        <td>
-                        <img src="{{ asset('uploads/' ~ slider.photo) }}"
-                         alt="photo du slider" width="80" class="img-thumbnail">
-                        </td>
-                        <td>{{ slider.ordre }}</td>
-                        <td>{{ slider.createdAt | date('d/m/Y') }}</td>
-                        <td>
-                            <a href="#" class="text-info" title="Créer Slider"><i></i></a>
-                            <a href="#" class="text-info" title="Modifier Slider"><i></i></a>
-                            <a href="#" class="text-info" title="Supprimer Slider"><i></i></a>
-                                                
-                        </td>
+                        <td>{{ slider.id }}</td>
+                        <td>{{ slider.id }}</td>
+                        <td>{{ slider.id }}</td>
+                        <td></td>
                     </tr>
-                {% endfor %}
                 </tbody>            
             </table>
         
