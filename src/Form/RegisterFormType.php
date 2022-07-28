@@ -23,7 +23,6 @@ class RegisterFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'E-mail'
             ])
-         
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe'
             ])
@@ -51,8 +50,6 @@ class RegisterFormType extends AbstractType
                     'class' => 'd-block col-3 my-3 mx-auto btn btn-success'
                 ]
             ])
-            
-            
         ;
     }
 

@@ -18,11 +18,7 @@ class CommandeFormType extends AbstractType
             ->add('prenom')
             ->add('nom')
             ->add('telephone')
-            ->add('email')
-            ->add('date_enregistrement')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('deletedAt')
+            ->add('email')        
             ->add('chambre')
         ;
     }
