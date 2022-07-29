@@ -62,6 +62,11 @@ class Chambre
      */
     private $deletedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="chambre")
+     */
+    private $no;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +176,18 @@ class Chambre
     public function setDeletedAt(?\DateTimeInterface $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    public function getNo(): ?Commande
+    {
+        return $this->no;
+    }
+
+    public function setNo(?Commande $no): self
+    {
+        $this->no = $no;
 
         return $this;
     }

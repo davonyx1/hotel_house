@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Ajouter un slider{% endblock %}
+
+{% block body %}
+
+    {% if slider is not defined %}
+        <h1 class="text-center my-4">Ajouter un slider</h1>
+    {% else %}
+        <h1 class="text-center my-4">Modifier un slider</h1>    
+    
+        
+    <div class="row">
+        <div class="col-8 mx-auto">
+        {{ form_start(form) }}
+
+        <div class="row">
+            <div class="col-6">{{ form_row(form.photo) }}</div>
+            <div class="col-6">{{ form_row(form.ordre) }}</div>
+            <div class="col-6">{{ form_row(form.date_enregistrement) }}</div>
+            <div class="col-6"></div>
+            <div class="col-6"></div>
+            <div class="col-6"></div>
+        </div>
+        
+        {{ form_end(form) }}
+        
+        </div>
+    </div>
+    
+    {% endif %}
+
+
+{% endblock %}

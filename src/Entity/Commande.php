@@ -75,6 +75,11 @@ class Commande
     private $deletedAt;
 
     /**
+     * @ORM\OneToMany(targetEntity=Chambre::class, mappedBy="no")
+     */
+    private $chambre;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="chambre")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -255,4 +260,34 @@ class Commande
 
     //     return $this;
     // }
+
+    /**
+     * @return Collection<int, Chambre>
+     */
+    public function getChambre(): Collection
+    {
+        return $this->chambre;
+    }
+
+    public function addChambre(Chambre $chambre): self
+    {
+        if (!$this->chambre->contains($chambre)) {
+            $this->chambre[] = $chambre;
+            $chambre->setNo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChambre(Chambre $chambre): self
+    {
+        if ($this->chambre->removeElement($chambre)) {
+            // set the owning side to null (unless already changed)
+            if ($chambre->getNo() === $this) {
+                $chambre->setNo(null);
+            }
+        }
+
+        return $this;
+    }
 }
